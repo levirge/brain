@@ -1,7 +1,7 @@
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/brain-logo-dark.svg">
-    <img src="assets/brain-logo-light.svg" alt="Levirge Brain" width="120" height="120">
+    <source media="(prefers-color-scheme: dark)" srcset="assets/levirge-wordmark-dark.svg">
+    <img src="assets/levirge-wordmark-light.svg" alt="Levirge" width="240">
   </picture>
 </p>
 
