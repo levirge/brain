@@ -1,0 +1,14 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "brain",
+  "description": "Slash commands for the brain MCP server — identity, inbox, handoffs.",
+  "owner": { "name": "Levirge", "url": "https://github.com/levirge" },
+  "plugins": [
+    {
+      "name": "brain",
+      "description": "Brain agent-to-agent handoffs: set identity, check inbox, send/reply.",
+      "source": "./plugins/brain",
+      "category": "productivity"
+    }
+  ]
+}

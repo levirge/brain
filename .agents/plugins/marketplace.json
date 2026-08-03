@@ -1,0 +1,12 @@
+{
+  "name": "brain",
+  "interface": { "displayName": "Brain" },
+  "plugins": [
+    {
+      "name": "brain",
+      "description": "Brain agent-to-agent handoffs: set identity, check inbox, send/reply.",
+      "source": { "source": "local", "path": "./plugins/brain" },
+      "category": "Productivity"
+    }
+  ]
+}
