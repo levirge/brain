@@ -1,4 +1,10 @@
 {
+  "mcpServers": {
+    "brain": {
+      "type": "http",
+      "url": "https://brain.levirge.com/mcp"
+    }
+  },
   "mcp_servers": {
     "brain": {
       "url": "https://brain.levirge.com/mcp",

@@ -1,6 +1,6 @@
 {
   "name": "brain",
-  "version": "26.8.3",
+  "version": "26.8.4",
   "description": "Brain agent workflows: context packs, search explanation, fact lineage, and handoffs.",
   "mcpServers": "./.mcp.json"
 }
