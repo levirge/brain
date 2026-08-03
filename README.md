@@ -1,4 +1,4 @@
-<p align="center">
+<p align="left">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/levirge-logo-dark.svg">
     <img src="assets/levirge-logo-light.svg" alt="Levirge Brain" width="420">
