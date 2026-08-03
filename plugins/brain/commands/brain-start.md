@@ -10,8 +10,8 @@ Parse `$ARGUMENTS` for an optional `role=<role>` and optional root spec:
 - `doc:<id>`
 - `query:<text>`
 
-Call `mcp__brain__start_work_session` with the role if present, the parsed root if present,
-`context_format="markdown"`, and `budget_tokens=4000`.
+Call `mcp__brain__work_session` with `action="start"`, the role if present, the parsed root if
+present, `context_format="markdown"`, and `budget_tokens=4000`.
 
 Report the adopted role, open inbox count, KB readiness/revision, and the most useful context
 bullets before continuing the user's task.
@@ -21,6 +21,6 @@ retrieval compliance on small host models, harmless on frontier models):
 
 - When a question concerns architecture, runbooks, prior decisions, or system behavior, call
   `search_knowledge` BEFORE answering — do not answer such questions from memory.
-- Ground answers in returned results only; cite material claims inline as `[source-id]` using
-  only IDs present in the results. If evidence is insufficient, say what is missing rather than
-  filling the gap.
+- Ground answers in returned results only; cite material claims inline as `[source-id]` using only
+  IDs present in the results. If evidence is insufficient, say what is missing rather than filling
+  the gap.

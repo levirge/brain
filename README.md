@@ -44,7 +44,7 @@ codex plugin add levirge/brain
   hand work from one session, role, or CLI to another (`/brain:brain-handoff`).
 - **Work sessions & context packs** — `/brain:brain-start` pulls the right
   context for a task; `/brain:brain-finish` persists what was learned.
-- **Self-improving ranking** — `mark_helpful` / `mark_dead_end` feedback tunes
+- **Self-improving ranking** — `feedback` (helpful / dead-end verdicts) tunes
   retrieval to how your team actually works.
 
 ## Works with your models

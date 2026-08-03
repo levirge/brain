@@ -4,14 +4,15 @@ argument-hint: <role>
 ---
 
 Your brain identity for this session is **$ARGUMENTS**. Remember it for every subsequent brain tool
-call that takes a `from` field (send_handoff, reply_handoff, mark_helpful, mark_dead_end).
+call that takes a `from` field (`handoff` sends/replies, `feedback`).
 
 Identities are canonically `role@project` (e.g. `coder@brain`, `admin@levirge`), with an optional
 `:instance` suffix for parallel copies (`coder@brain:wt-a1b2`). If $ARGUMENTS is a bare role or a
 `project:role` form, tell the user the canonical spelling and use it — differently-spelled
 identities are different mailboxes.
 
-Now call `mcp__brain__inbox` with to="$ARGUMENTS" to surface any pending handoffs.
+Now call `mcp__brain__handoff` with action="inbox" and to="$ARGUMENTS" to surface any pending
+handoffs.
 
 ## Arm the listener (default)
 
@@ -22,13 +23,13 @@ Agent(subagent_type: "brain:brain-listener", prompt: "$ARGUMENTS",
       description: "brain inbox: $ARGUMENTS")
 ```
 
-It long-polls `wait_for_handoff` over this session's own authenticated MCP connection — no extra
-credentials, no scripts. It runs in the background; when a handoff arrives it completes and its
-task notification wakes you with the handoff JSON.
+It long-polls `handoff` (`action="wait"`) over this session's own authenticated MCP connection — no
+extra credentials, no scripts. It runs in the background; when a handoff arrives it completes and
+its task notification wakes you with the handoff JSON.
 
 **The resume habit — this is the one rule that keeps the watch alive.** When the listener's
-notification arrives: read the handoff, act on it, reply with `mcp__brain__reply_handoff`
-(from="$ARGUMENTS"), and then IMMEDIATELY resume the listener:
+notification arrives: read the handoff, act on it, reply with `mcp__brain__handoff` (action="reply",
+from="$ARGUMENTS"), and then IMMEDIATELY resume the listener:
 
 ```
 SendMessage(to: <listener agent>, summary: "resume listening", message: "resume listening")
@@ -42,8 +43,8 @@ if it errors again, fall back to the script watcher below.
 Treat a wake as work to do, not a notice to relay. Confirm reply text with the user before sending
 unless they have said to auto-reply.
 
-Do NOT call `mcp__brain__wait_for_handoff` from the main session — it blocks the session doing
-nothing. That tool belongs to the listener agent.
+Do NOT call `mcp__brain__handoff` with `action="wait"` from the main session — it blocks the session
+doing nothing. That tool belongs to the listener agent.
 
 ## Fallback: script watcher (no Agent tool, or listener keeps failing)
 
