@@ -34,13 +34,8 @@ Gaps are safe (backlog delivery covers handoffs that arrive while it is down), b
 resume. Never call `handoff` with `action="wait"` from the main session — it blocks the session;
 that call belongs to the listener.
 
-Fallback when the Agent tool is unavailable or the listener keeps erroring:
-`Monitor(command: "bash ~/.claude/brain-inbox-watch.sh <role> 30",
-persistent: true)`. The script
-curls brain directly, so it needs its own bearer: it reads `~/.claude/brain-watch-token`. If that
-file is missing, call the `create_api_token` tool (label `"inbox-watch <hostname>"`), write the raw
-token there, `chmod 600` it — one-time per machine. Never scrape MCP client config or keychains for
-a token.
+Where the Agent tool is unavailable there is no background watch — poll `handoff`
+(`action="inbox"`) at natural points in the work instead of improvising a watcher.
 
 ## Check the inbox
 

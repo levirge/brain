@@ -37,13 +37,13 @@ SendMessage(to: <listener agent>, summary: "resume listening", message: "resume 
 
 Handle-then-resume, every time, even if the handoff needs no action. Gaps are safe — handoffs that
 arrive while the listener is down are delivered instantly on the next wait (backlog delivery) — but
-only if you actually resume. If the listener returns an error instead of a handoff, resume it once;
-if it errors again, fall back to the script watcher below.
+only if you actually resume. If the listener returns an error instead of a handoff, resume it once.
 
 One error does NOT deserve a resume: `no handoff tool available` (or a timeout report citing
 thousands of attempts in under a couple of minutes) means brain's MCP tools never resolved in the
 subagent, so re-running it fails identically. Check the connection instead — `ToolSearch("+handoff")`
-from this session confirms whether any handoff tool exists and under which prefix.
+from this session confirms whether any handoff tool exists and under which prefix. If brain's tools
+genuinely are not connected, say so and stop: there is no second watch path to fall back to.
 
 Treat a wake as work to do, not a notice to relay. Confirm reply text with the user before sending
 unless they have said to auto-reply.
@@ -51,27 +51,10 @@ unless they have said to auto-reply.
 Do NOT call `mcp__brain__handoff` with `action="wait"` from the main session — it blocks the session
 doing nothing. That tool belongs to the listener agent.
 
-## Fallback: script watcher (no Agent tool, or listener keeps failing)
+## No Agent tool available?
 
-The script needs its own bearer (brain gates /mcp and /v1 — ADR-0021 §2). It reads
-`~/.claude/brain-watch-token` automatically. If that file is missing, mint one over the MCP channel
-you already hold — do NOT go digging in MCP client config or keychains for a token:
-
-1. Call `mcp__brain__create_api_token` with label `"inbox-watch <hostname>"`.
-2. Save it: write the raw token to `~/.claude/brain-watch-token`, then `chmod 600` it.
-
-One-time per machine — the token is durable, and revocable in brain Settings. Then:
-
-```
-Monitor(command: "bash ~/.claude/brain-inbox-watch.sh $ARGUMENTS 30",
-        description: "brain inbox: $ARGUMENTS", persistent: true)
-```
-
-It polls every 30s and emits one line per **new** handoff (the current backlog is seeded silently).
-If that path does not exist, copy it once from
-`~/.claude/plugins/marketplaces/brain/plugins/brain/scripts/inbox-watch.sh`. A 401 means the saved
-token was revoked — mint a fresh one and re-arm; do not retry the same token. For ~1s latency,
-prefix with `BRAIN_WATCH_SSE=1` (streams `/v1/handoffs/stream`, re-reads inbox on reconnect).
+Then there is no background watch — say so rather than improvising one. Check the inbox directly
+with `mcp__brain__handoff` (`action="inbox"`) at natural points in the work instead.
 
 Report back: the identity you adopted, that the listener is armed (and which mode), and any open
 handoffs (subject + sender, oldest first).
