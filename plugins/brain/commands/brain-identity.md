@@ -40,6 +40,11 @@ arrive while the listener is down are delivered instantly on the next wait (back
 only if you actually resume. If the listener returns an error instead of a handoff, resume it once;
 if it errors again, fall back to the script watcher below.
 
+One error does NOT deserve a resume: `no handoff tool available` (or a timeout report citing
+thousands of attempts in under a couple of minutes) means brain's MCP tools never resolved in the
+subagent, so re-running it fails identically. Check the connection instead — `ToolSearch("+handoff")`
+from this session confirms whether any handoff tool exists and under which prefix.
+
 Treat a wake as work to do, not a notice to relay. Confirm reply text with the user before sending
 unless they have said to auto-reply.
 
