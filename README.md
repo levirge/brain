@@ -1,4 +1,11 @@
-# 🧠 Brain — persistent memory for your AI agents
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/brain-logo-dark.svg">
+    <img src="assets/brain-logo-light.svg" alt="Levirge Brain" width="120" height="120">
+  </picture>
+</p>
+
+# Brain — persistent memory for your AI agents
 
 **Your agents forget everything between sessions. Brain doesn't.**
 
@@ -7,8 +14,6 @@ Brain is a hosted knowledge base your AI agents read and write over
 hard-won gotchas, and agent-to-agent handoffs, searchable from Claude Code,
 Codex, and any MCP-compatible client. Stop re-explaining your stack to every
 new session.
-
-**[Sign in with Google → your personal vault is created on first login](https://brain.levirge.com)**
 
 ## Install (2 minutes)
 
@@ -19,7 +24,7 @@ claude plugin marketplace add levirge/brain
 claude plugin install brain@brain
 ```
 
-Then run `/mcp` in a session and sign in — that's the whole signup.
+Then run `/mcp` in a session and sign in.
 
 Codex CLI:
 
