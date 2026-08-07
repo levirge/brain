@@ -17,7 +17,7 @@
     ],
     "mcpServers": "./.mcp.json",
     "interface": {
-        "displayName": "Brain",
+        "displayName": "Levirge Brain",
         "shortDescription": "Shared knowledge base and handoffs for agents",
         "longDescription": "Search a curated knowledge base of architecture, runbooks and prior decisions, and write new facts back to it. Also carries durable agent-to-agent handoffs so work survives across sessions.",
         "developerName": "Levirge",

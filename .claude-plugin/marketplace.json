@@ -6,6 +6,7 @@
   "plugins": [
     {
       "name": "brain",
+      "displayName": "Levirge Brain",
       "description": "Brain agent-to-agent handoffs: set identity, check inbox, send/reply.",
       "source": "./plugins/brain",
       "category": "productivity"

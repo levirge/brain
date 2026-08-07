@@ -1,6 +1,6 @@
 {
   "name": "brain",
-  "interface": { "displayName": "Brain" },
+  "interface": { "displayName": "Levirge Brain" },
   "plugins": [
     {
       "name": "brain",
