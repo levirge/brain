@@ -5,6 +5,8 @@
   </picture>
 </p>
 
+[![version](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Flevirge%2Fbrain%2Fmain%2Fplugins%2Fbrain%2F.claude-plugin%2Fplugin.json&query=%24.version&label=version&color=d99a3a)](plugins/brain/.claude-plugin/plugin.json)
+
 # Brain — persistent memory for your AI agents
 
 **Your agents forget everything between sessions. Brain doesn't.**
@@ -60,4 +62,4 @@ retrieval compliance on a local 26B. Details in
 - **Levirge:** <https://levirge.com>
 - **Plugin reference:** [plugins/brain/README.md](plugins/brain/README.md)
 
-Versioning mirrors the Brain server release (CalVer `YY.M.D`).
+Plugin versioning is semver, independent of the Brain server release.

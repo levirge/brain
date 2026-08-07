@@ -1,6 +1,40 @@
 {
-  "name": "brain",
-  "version": "26.8.6",
-  "description": "Brain agent workflows: context packs, search explanation, fact lineage, and handoffs.",
-  "mcpServers": "./.mcp.json"
+    "name": "brain",
+    "version": "0.5.0",
+    "description": "Brain agent workflows: context packs, search explanation, fact lineage, and handoffs.",
+    "author": {
+        "name": "Levirge",
+        "url": "https://levirge.com"
+    },
+    "homepage": "https://brain.levirge.com",
+    "repository": "https://github.com/levirge/brain",
+    "keywords": [
+        "knowledge",
+        "memory",
+        "search",
+        "handoff",
+        "mcp"
+    ],
+    "mcpServers": "./.mcp.json",
+    "interface": {
+        "displayName": "Brain",
+        "shortDescription": "Shared knowledge base and handoffs for agents",
+        "longDescription": "Search a curated knowledge base of architecture, runbooks and prior decisions, and write new facts back to it. Also carries durable agent-to-agent handoffs so work survives across sessions.",
+        "developerName": "Levirge",
+        "websiteUrl": "https://brain.levirge.com",
+        "category": "Productivity",
+        "capabilities": [
+            "Knowledge search",
+            "Write-back",
+            "Agent handoffs"
+        ],
+        "defaultPrompt": [
+            "What did we decide about <topic>?",
+            "Capture this decision in the knowledge base.",
+            "Check my handoff inbox."
+        ],
+        "logo": "./assets/logo.png",
+        "logoDark": "./assets/logo-dark.png",
+        "composerIcon": "./assets/icon.png"
+    }
 }
