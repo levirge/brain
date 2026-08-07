@@ -23,7 +23,7 @@ Claude Code:
 
 ```bash
 claude plugin marketplace add levirge/brain
-claude plugin install brain@brain
+claude plugin install brain@levirge-brain
 ```
 
 Then run `/mcp` in a session and sign in.

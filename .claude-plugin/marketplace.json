@@ -1,6 +1,6 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
-  "name": "brain",
+  "name": "levirge-brain",
   "description": "Slash commands for the brain MCP server — identity, inbox, handoffs.",
   "owner": { "name": "Levirge", "url": "https://github.com/levirge" },
   "plugins": [
