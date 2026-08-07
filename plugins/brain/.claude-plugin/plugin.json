@@ -2,7 +2,7 @@
     "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
     "name": "brain",
     "displayName": "Levirge Brain",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "description": "Brain agent workflows: context packs, search explanation, fact lineage, and handoffs. Invoke as /brain:brain-context, etc.",
     "author": {
         "name": "Levirge",
