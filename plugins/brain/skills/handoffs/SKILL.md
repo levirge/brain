@@ -1,5 +1,5 @@
 ---
-name: brain-handoffs
+name: handoffs
 description: Agent-to-agent handoffs via the brain MCP server — adopt a role identity, check the inbox, send a handoff to another agent, or reply to one. Use when the user says "check my handoffs", "hand this off to <role>", "reply to that handoff", or names a brain identity/role to work as.
 ---
 
