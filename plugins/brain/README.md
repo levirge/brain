@@ -1,8 +1,8 @@
 # Brain plugin
 
 Agent workflows over the Brain MCP server: work sessions, context packs, search explanation, fact
-lineage, and agent-to-agent handoffs. Commands install as `/brain:brain-start`,
-`/brain:brain-context`, etc.
+lineage, and agent-to-agent handoffs. Commands install as `/brain:start`,
+`/brain:context`, etc.
 
 ## Host-model guidance (measured)
 
@@ -13,7 +13,7 @@ agent bake-off (10 KB tasks × 3 repeats, fixed judge — full report in the KB,
 - **Good Brain citizens:** Claude Opus-class (perfect grounding), `z-ai/glm-5.2` (Claude-class
   grounding at ~1/10 cost), `poolside/laguna-xs` (fastest tie).
 - **Small/local models work, with conditions:** they treat permissive tool instructions as optional.
-  The `/brain:brain-start` command now embeds a binding search-first + grounding contract; keep it
+  The `/brain:start` command now embeds a binding search-first + grounding contract; keep it
   in context. Measured effect: doubled retrieval compliance on a 26B, halved hallucinated claims on
   a 9B.
 - **Avoid retrieve-then-ignore models** for KB work: in the same eval, `openai/gpt-oss-120b`

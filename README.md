@@ -41,11 +41,11 @@ codex plugin add levirge/brain
 - **Write-back that compounds** — `add_knowledge` captures decisions and fixes
   once; every future session starts warmer.
 - **Fact lineage** — trace any answer back to the documents and atoms it came
-  from (`/brain:brain-lineage`).
+  from (`/brain:lineage`).
 - **Agent-to-agent handoffs** — a shared inbox between agents and machines:
-  hand work from one session, role, or CLI to another (`/brain:brain-handoff`).
-- **Work sessions & context packs** — `/brain:brain-start` pulls the right
-  context for a task; `/brain:brain-finish` persists what was learned.
+  hand work from one session, role, or CLI to another (`/brain:handoff`).
+- **Work sessions & context packs** — `/brain:start` pulls the right
+  context for a task; `/brain:finish` persists what was learned.
 - **Self-improving ranking** — `feedback` (helpful / dead-end verdicts) tunes
   retrieval to how your team actually works.
 

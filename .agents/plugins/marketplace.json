@@ -4,7 +4,7 @@
   "plugins": [
     {
       "name": "brain",
-      "description": "Persistent memory for AI agents: searchable knowledge base, write-back, fact lineage, and agent-to-agent handoffs. Invoke as /brain:brain-start, /brain:brain-identity, /brain:brain-handoff.",
+      "description": "Persistent memory for AI agents: searchable knowledge base, write-back, fact lineage, and agent-to-agent handoffs. Invoke as /brain:start, /brain:identity, /brain:handoff.",
       "source": { "source": "local", "path": "./plugins/brain" },
       "policy": {
         "installation": "AVAILABLE",

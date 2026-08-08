@@ -1,6 +1,6 @@
 {
     "name": "brain",
-    "version": "0.6.0",
+    "version": "0.7.0",
     "description": "Brain agent workflows: context packs, search explanation, fact lineage, and handoffs.",
     "author": {
         "name": "Levirge",
