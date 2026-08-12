@@ -27,14 +27,18 @@ prompt as the `to` value.
    plugin/CLI install but `mcp__<uuid>__…` for a connector install. Take the first match whose name
    ends in `handoff` (consolidated tool) or `wait_for_handoff` (pre-26.8 servers) and use that exact
    name for every call below.
-2. Loop: call it with `to=<identity>` and `timeout_seconds=240` (stays inside the 5-minute
-   prompt-cache window, so each quiet cycle re-reads cache instead of re-writing ~38k of context).
+2. Loop: call it with `to=<identity>` and `timeout_seconds=120` — the server's cap. Do NOT ask for
+   more: a longer window cannot survive the transport (measured 2026-08-12, a 240s wait dies at
+   ~182s with "Tool call timed out waiting for server response"), so it buys nothing and turns every
+   quiet cycle into a three-minute error.
    Add `action="wait"` when the tool is the consolidated `handoff` — omit it for `wait_for_handoff`,
    which has no action parameter.
-   - Null notification (timeout) → call again. Timeouts are normal; loop indefinitely.
+   - `timed_out: true` (or a null notification) → call again. Quiet inboxes are normal; loop
+     indefinitely.
    - Tool call errors → retry. Transport drops self-heal: the next call delivers any handoff that
      arrived mid-drop (backlog delivery). Only stop with an error report if three consecutive calls
-     fail.
+     fail. A timeout is NOT an error — it now arrives as `timed_out: true`, so a genuine error means
+     something is actually wrong.
 3. On a non-null notification, stop immediately and return:
    `{"received": <notification object>, "error": null}`
 4. On triple failure, return: `{"received": null, "error": "<exact text of the last error>"}`
