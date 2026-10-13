@@ -1,5 +1,5 @@
 ---
-description: Send a handoff (arg: <from> <to> <subject>)
+description: "Send a handoff (arg: <from> <to> <subject>)"
 argument-hint: <from> <to> <subject…>
 ---
 

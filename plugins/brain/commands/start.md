@@ -1,6 +1,6 @@
 ---
 description: Start a Brain work session with overview, context, and inbox
-argument-hint: [role=<role>] [vault:...|entity:...|doc:...|query:...]
+argument-hint: "[role=<role>] [vault:...|entity:...|doc:...|query:...]"
 ---
 
 Parse `$ARGUMENTS` for an optional `role=<role>` and optional root spec:

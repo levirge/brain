@@ -1,5 +1,5 @@
 ---
-description: Show open handoffs for your role (arg: <role> [status])
+description: "Show open handoffs for your role (arg: <role> [status])"
 argument-hint: <role> [open|replied|all]
 ---
 

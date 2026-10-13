@@ -1,5 +1,5 @@
 ---
-description: Fetch an agent context pack (arg: <vault:...|entity:...|doc:...|query:...> [json|markdown])
+description: "Fetch an agent context pack (arg: <vault:...|entity:...|doc:...|query:...> [json|markdown])"
 argument-hint: <vault:...|entity:...|doc:...|query:...> [json|markdown]
 ---
 

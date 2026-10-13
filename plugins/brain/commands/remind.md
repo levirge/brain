@@ -1,6 +1,6 @@
 ---
-description: Show reminders that are due, or set one (arg: [7d|30d] | <vault> <date> <what>)
-argument-hint: [7d|30d] | <vault> <yyyy-mm-dd> <what to remember>
+description: "Show reminders that are due, or set one (arg: [7d|30d] | <vault> <date> <what>)"
+argument-hint: "[7d|30d] | <vault> <yyyy-mm-dd> <what to remember>"
 ---
 
 Parse `$ARGUMENTS`:

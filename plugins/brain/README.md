@@ -28,3 +28,9 @@ agent bake-off (10 KB tasks × 3 repeats, fixed judge — full report in the KB,
    insufficient, say what's missing instead of filling the gap.
 3. Feed back: `feedback` with `verdict: "helpful"` for results you used, `verdict: "dead_end"` for
    plausible-but-wrong hits — this is what makes ranking self-improve.
+
+## Data and privacy
+
+The plugin bundles one remote MCP server, `https://brain.levirge.com/mcp`, signed in with OAuth.
+Everything the commands, skill, and agent read or write goes to that server; the plugin runs no
+local code and sends nothing anywhere else. [Privacy policy](https://levirge.com/privacy).

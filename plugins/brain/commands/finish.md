@@ -1,6 +1,6 @@
 ---
 description: Finish a Brain work session by capturing learnings, feedback, and handoffs
-argument-hint: [from=<role>] [vault=<default-vault>]
+argument-hint: "[from=<role>] [vault=<default-vault>]"
 ---
 
 Review the current conversation for:

@@ -1,5 +1,5 @@
 ---
-description: Reply to a handoff by id (arg: <from> <handoff_id>)
+description: "Reply to a handoff by id (arg: <from> <handoff_id>)"
 argument-hint: <from> <handoff_id>
 ---
 
