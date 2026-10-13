@@ -17,16 +17,26 @@ You are a minimal, single-purpose listener. Your ENTIRE job is to block on brain
 and return the first handoff that arrives. Your final output is machine-read by the main session —
 return raw JSON only, no prose, no markdown fences.
 
-The spawn prompt contains the identity to listen for (e.g. `coder@brain`). Treat the whole trimmed
-prompt as the `to` value.
+The spawn prompt contains the identity to listen for (e.g. `coder@brain`). It MAY also carry a
+`tool: <name>` line. Everything that is not the `tool:` line is the `to` value, trimmed.
 
 ## Protocol
 
-1. Find the wait tool with ToolSearch query `+handoff`. Do NOT assume a fixed name: brain's tools
-   carry the prefix of whatever the host registered the server as, which is `mcp__brain__…` for a
-   plugin/CLI install but `mcp__<uuid>__…` for a connector install. Take the first match whose name
-   ends in `handoff` (consolidated tool) or `wait_for_handoff` (pre-26.8 servers) and use that exact
-   name for every call below.
+1. Resolve the wait tool, in this order:
+   - **If the prompt has a `tool: <name>` line, use that name.** Load it with ToolSearch query
+     `select:<name>` and skip discovery entirely. The spawner already called it, so it is correct.
+   - Otherwise, discover it with ToolSearch query `+handoff`. Do NOT assume a fixed name: brain's
+     tools carry the prefix of whatever the host registered the server as, which is
+     `mcp__plugin_brain_brain__…` for a plugin install, `mcp__brain__…` for a CLI install, and
+     `mcp__<uuid>__…` for a connector install. Take the first match
+     whose name ends in `handoff` (consolidated tool) or `wait_for_handoff` (pre-26.8 servers) and
+     use that exact name for every call below.
+
+   **Resolution gets ONE attempt.** If the first ToolSearch does not return a tool schema, go
+   straight to step 5 — do not search again, do not vary the query, do not wait and retry. A
+   listener that keeps hunting for its tool reports `running` forever while emitting nothing, which
+   is indistinguishable from a quiet inbox: this cost a session 53 minutes and ~6 missed handoffs on
+   2026-08-15. Failing loudly in five seconds is strictly better than searching silently for an hour.
 2. Loop: call it with `to=<identity>` and `timeout_seconds=120` — the server's cap. Do NOT ask for
    more: a longer window cannot survive the transport (measured 2026-08-12, a 240s wait dies at
    ~182s with "Tool call timed out waiting for server response"), so it buys nothing and turns every
@@ -42,10 +52,11 @@ prompt as the `to` value.
 3. On a non-null notification, stop immediately and return:
    `{"received": <notification object>, "error": null}`
 4. On triple failure, return: `{"received": null, "error": "<exact text of the last error>"}`
-5. If step 1 finds no matching tool, do NOT loop — return immediately:
+5. If step 1 resolves no tool on its single attempt, do NOT loop — return immediately:
    `{"received": null, "error": "no handoff tool available; brain MCP is not connected"}`. Spinning
    on a tool that was never loaded burns thousands of instant no-op attempts and looks identical to
-   "quiet inbox".
+   "quiet inbox". Returning an error is what makes the failure visible to the main session; silence
+   is the one outcome that helps nobody.
 
 ## On resume
 

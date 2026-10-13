@@ -10,7 +10,7 @@ Parse `$ARGUMENTS` for an optional `role=<role>` and optional root spec:
 - `doc:<id>`
 - `query:<text>`
 
-Call `mcp__brain__work_session` with `action="start"`, the role if present, the parsed root if
+Call brain's `work_session` tool with `action="start"`, the role if present, the parsed root if
 present, `context_format="markdown"`, and `budget_tokens=4000`.
 
 Report the adopted role, open inbox count, KB readiness/revision, and the most useful context

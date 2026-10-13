@@ -1,6 +1,6 @@
 {
     "name": "brain",
-    "version": "0.7.3",
+    "version": "0.7.5",
     "description": "Brain agent workflows: context packs, search explanation, fact lineage, and handoffs.",
     "author": {
         "name": "Levirge",
@@ -8,6 +8,7 @@
     },
     "homepage": "https://brain.levirge.com",
     "repository": "https://github.com/levirge/brain",
+    "license": "MIT",
     "keywords": [
         "knowledge",
         "memory",
@@ -15,7 +16,7 @@
         "handoff",
         "mcp"
     ],
-    "mcpServers": "./.mcp.json",
+    "mcpServers": "./codex.mcp.json",
     "interface": {
         "displayName": "Levirge Brain",
         "shortDescription": "Shared knowledge base and handoffs for agents",

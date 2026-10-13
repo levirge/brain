@@ -5,7 +5,7 @@ argument-hint: <query>
 
 Use all of `$ARGUMENTS` as the query. If empty, ask one short question.
 
-Call `mcp__brain__search_knowledge` with `explain=true`, `query=<query>`,
+Call brain's `search_knowledge` tool with `explain=true`, `query=<query>`,
 `include_content="snippet"`, and default `k=10`.
 
 Summarize confidence, top score, rerank status, applied filters, and the top hits. Ground the

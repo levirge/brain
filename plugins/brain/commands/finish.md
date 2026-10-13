@@ -11,7 +11,7 @@ Review the current conversation for:
 - handoffs another role should receive
 
 Parse `$ARGUMENTS` for optional `from=<role>` and `vault=<default-vault>`. Then call
-`mcp__brain__work_session` with `action="finish"` and:
+brain's `work_session` tool with `action="finish"` and:
 
 - `from`, if supplied
 - `capture_vault`, if supplied

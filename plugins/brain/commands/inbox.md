@@ -1,10 +1,10 @@
 ---
 description: Show open handoffs for your role (arg: <role> [status])
-  argument-hint: <role> [open|replied|all]
+argument-hint: <role> [open|replied|all]
 ---
 
 Parse `$ARGUMENTS` as `<role> [open|replied|all]` (status defaults to open). Call
-`mcp__brain__handoff` with `action="inbox"`, `to=<role>`, and `status=<status>`. Format the result
+brain's `handoff` tool with `action="inbox"`, `to=<role>`, and `status=<status>`. Format the result
 as a compact list, newest first:
 
 - For each handoff: `{id} from {from} — "{subject}"` plus a relative timestamp.

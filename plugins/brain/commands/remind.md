@@ -1,14 +1,14 @@
 ---
 description: Show reminders that are due, or set one (arg: [7d|30d] | <vault> <date> <what>)
-  argument-hint: [7d|30d] | <vault> <yyyy-mm-dd> <what to remember>
+argument-hint: [7d|30d] | <vault> <yyyy-mm-dd> <what to remember>
 ---
 
 Parse `$ARGUMENTS`:
 
-- **Empty, or a window like `7d` / `30d` / `next week`** → list. Call `mcp__brain__reminder` with
+- **Empty, or a window like `7d` / `30d` / `next week`** → list. Call brain's `reminder` tool with
   `action="list"`, and `within_days=<n>` when a window was given (7 for a week, 30 for a month).
   Omit `within_days` entirely for "what is due right now" — do NOT pass 0.
-- **`<vault> <yyyy-mm-dd> <what>`** → set one. Call `mcp__brain__reminder` with `action="add"`,
+- **`<vault> <yyyy-mm-dd> <what>`** → set one. Call brain's `reminder` tool with `action="add"`,
   `vault`, `due`, and `title=<what>`. `due` is required; if the user gave no date, ask for one
   rather than inventing a plausible-looking default.
 
