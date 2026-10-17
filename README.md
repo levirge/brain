@@ -34,6 +34,15 @@ Codex CLI:
 codex plugin add levirge/brain
 ```
 
+Cline, or any MCP client — remote server, no install:
+
+```json
+{ "mcpServers": { "brain": { "type": "streamableHttp", "url": "https://brain.levirge.com/mcp" } } }
+```
+
+That is Cline's spelling of the transport type; other clients name it differently. OAuth
+sign-in on first connect. Details: [llms-install.md](llms-install.md).
+
 ## What you get
 
 - **Search-first memory** — `search_knowledge` with semantic search + reranking;
